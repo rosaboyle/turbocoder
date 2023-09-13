@@ -14,8 +14,6 @@ The overarching goal of this project is to augment the developer experience by a
 
 - **Respect Community Conventions**: Do not reinvent the wheel by changing frameworks or altering development workflows that have stood the test of time. Our aim should not be to disrupt but to integrate seamlessly. For instance, we should respect the directory structures commonly used in projects and aim to generate code that would be indistinguishable from what a skilled human developer would produce.
 
-Certainly, adding concrete examples can make the guidelines more relatable and easier to follow. Here's how the "Respect Community Conventions" section could be updated with the examples you've provided, along with a few more:
-
 ### Respect Community Conventions
 
 - **Don't Reinvent the Wheel**: Respect the directory structures commonly used in projects and aim to generate code that would be indistinguishable from what a skilled human developer would produce. 
