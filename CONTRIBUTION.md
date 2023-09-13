@@ -14,6 +14,42 @@ The overarching goal of this project is to augment the developer experience by a
 
 - **Respect Community Conventions**: Do not reinvent the wheel by changing frameworks or altering development workflows that have stood the test of time. Our aim should not be to disrupt but to integrate seamlessly. For instance, we should respect the directory structures commonly used in projects and aim to generate code that would be indistinguishable from what a skilled human developer would produce.
 
+Certainly, adding concrete examples can make the guidelines more relatable and easier to follow. Here's how the "Respect Community Conventions" section could be updated with the examples you've provided, along with a few more:
+
+### Respect Community Conventions
+
+- **Don't Reinvent the Wheel**: Respect the directory structures commonly used in projects and aim to generate code that would be indistinguishable from what a skilled human developer would produce. 
+
+#### Examples:
+
+- **Framework Usage**: If the development community is heavily invested in specific frameworks like NodeJS for backend or ReactJS for frontend development, use those instead of writing JavaScript code from scratch.
+
+    - **Good**: Generate a ReactJS component when asked for a UI element.
+    - **Bad**: Writing plain JavaScript and HTML to accomplish the same task.
+  
+- **Dependency Management and Build Tools**: Rather than writing your custom scripts for dependency management, use well-adopted tools like `pip` for Python or `npm` for NodeJS. Create corresponding `requirements.txt` or `package.json` files to manage dependencies.
+
+    - **Good**: Generate a `requirements.txt` file for Python dependencies.
+    - **Bad**: Writing custom Python code to download and install packages manually.
+  
+- **Containerization**: Use standardized containerization tools like Docker for setting up the environment, instead of shell scripts.
+
+    - **Good**: Generate a Dockerfile with all the necessary environment variables and dependencies.
+    - **Bad**: Writing a shell script to set up the environment manually.
+  
+- **Version Control**: Adhere to git conventions for version control. Use `.gitignore` files, create branches for features or bug fixes, and offer detailed commit messages.
+
+    - **Good**: Generate a `.gitignore` file for a new project automatically.
+    - **Bad**: Manually deleting unwanted files before each commit.
+  
+- **Testing**: Utilize established testing libraries and frameworks. For example, if the codebase is in Python, use `pytest` or `unittest` frameworks for writing test cases.
+
+    - **Good**: Generate test cases using `pytest` for a Python project.
+    - **Bad**: Writing custom code for each test case without using any testing framework.
+  
+By adhering to these conventions and best practices, we aim to make the tool not just powerful but also user-friendly and in harmony with the community’s accepted standards.
+
+
 ### Interpretability First
 
 - **Transparency Over Optimization**: As we aim to serve developers by taking their prompts and delivering ready-to-go code, interpretability in each step of the process is vital. From the way prompts are understood to how code is generated, tested, and documented, every phase should be clear and easily comprehensible by the end-user.
