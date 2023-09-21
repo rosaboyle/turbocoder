@@ -17,6 +17,14 @@ prompt_docker = """Now given the dependency file and the code. I want you to gen
  I just want you to give me the output of the file and nothing else. Don't explain me. Don't tell me anything else.
 """
 
+prompt_environment_vars = """Now given the dependency file and the code. I want you to generate environment variables required to succesfully run the code. 
+
+{}
+
+ I just want you to give me the output Environment variables and nothing else. Don't explain me. Don't tell me anything else.
+"""
+
+
 prompt_command_gen = """Now given the dependency file and the code. I want you to generate a Command required to successfully run the code. 
 
 {}
@@ -82,6 +90,19 @@ def get_command(code):
   ]
   )
   return completion.choices[0].message.content
+
+
+def get_environment_vars(code):
+  prompt_in = prompt_environment_vars.format(code)
+  completion = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": prompt_in}
+  ]
+  )
+  return completion.choices[0].message.content
+
 
 
 def json2file(output_json):
