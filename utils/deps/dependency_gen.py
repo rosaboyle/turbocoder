@@ -17,6 +17,13 @@ prompt_docker = """Now given the dependency file and the code. I want you to gen
  I just want you to give me the output of the file and nothing else. Don't explain me. Don't tell me anything else.
 """
 
+prompt_command_gen = """Now given the dependency file and the code. I want you to generate a Command required to successfully run the code. 
+
+{}
+
+ I just want you to give me command and nothing else. Don't explain me. Don't tell me anything else.
+"""
+
 
 
 def get_prompt(code):
@@ -24,7 +31,10 @@ def get_prompt(code):
     
 def get_prompt_dockerfile(code):
     return prompt_docker.format(code)
-    
+
+def get_prompt_command_gen(code):
+    return prompt_docker.format(code)
+ 
 def is_valid_json(json_str):
     required_keys = ["lang", "depsFileName", "fileContent"]
     
@@ -53,6 +63,17 @@ def get_deps(code):
 
 def get_dockerfile(code):
   prompt_in = get_prompt_dockerfile.format(code)
+  completion = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo",
+  messages=[
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": prompt_in}
+  ]
+  )
+  return completion.choices[0].message.content
+
+def get_command(code):
+  prompt_in = get_prompt_command_gen.format(code)
   completion = openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
   messages=[
