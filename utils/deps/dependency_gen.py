@@ -41,3 +41,11 @@ def get_deps(code):
   ]
   )
   return completion.choices[0].message.content
+
+
+def json2file(output_json):
+    file_name = output_json["depsFileName"]
+    file_content = output_json["fileContent"]
+    # Writing to the file
+    with open(file_name, 'w') as file:
+        file.write(file_content)
