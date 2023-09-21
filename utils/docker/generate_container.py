@@ -16,9 +16,15 @@ def run_container(image_name):
     containers = client.containers.list(filters={"ancestor": image_name})
     
     if containers:
-        print(f"Container with image {image_name} is already running.")
-        return
-
+        print(f"Container(s) with image {image_name} is/are already running.")
+        for container in containers:
+            print(f" - ID: {container.id}, Name: {container.name}, Status: {container.status}")
+        
+        choice = input("Do you want to create a new container? Or use an existing one? (new/existing): ").strip().lower()
+        
+        if choice == "existing":
+            container_id = input("Enter the ID of the container you want to use: ").strip()
+            return container_id
     # Run a new container with the dummy command to keep it running indefinitely
     container = client.containers.run(
         image=image_name,
