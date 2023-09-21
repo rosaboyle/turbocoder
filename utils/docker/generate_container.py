@@ -20,9 +20,9 @@ def run_container(image_name):
         for container in containers:
             print(f" - ID: {container.id}, Name: {container.name}, Status: {container.status}")
         
-        choice = input("Do you want to create a new container? Or use an existing one? (new/existing): ").strip().lower()
+        choice = input("Do you want to create a new container? (Y/n): ").strip().lower()
         
-        if choice == "existing":
+        if choice == "n" or choice == "N":
             container_id = input("Enter the ID of the container you want to use: ").strip()
             return container_id
     # Run a new container with the dummy command to keep it running indefinitely
